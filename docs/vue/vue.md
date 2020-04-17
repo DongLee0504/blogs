@@ -138,3 +138,45 @@ filters: {
 1. **破坏（销毁后）**<br />在实例销毁之后调用。调用后，所有的事件监听器会被移除，所有的子实例也会被销毁。你无法在其中进行任何操作。
 > 参考文献
 > [https://segmentfault.com/a/1190000011381906](https://segmentfault.com/a/1190000011381906)
+
+# 事件处理
+* 使用方法-- 事件对象最为第一个参数传入
+``` javascript
+<div id="app">
+    <button v-on:click="greet">点击</button>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    methods: {
+      greet(e) {
+        console.log(e) // 打印的是event事件
+      }
+    }
+  })
+</script>
+```
+* 使用内联代码-- 使用$event
+  ``` javascript
+  <div id="app">
+    <button v-on:click="greet(1, $event)">点击</button>
+  </div>
+
+  <script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    methods: {
+      greet(type, e) {
+        console.log(e)
+      }
+    }
+  })
+  </script>
+  ```
