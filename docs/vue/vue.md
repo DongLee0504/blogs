@@ -2,7 +2,7 @@
 
 <a name="ARgM6"></a>
 
-# 一、指令
+# 指令
 
 <a name="6soiP"></a>
 
@@ -11,7 +11,7 @@
 使用 v-if 会有性能开销。每次插入或者移除元素时都必须要生成元素内部的 DOM 树，这在某些时候是非常大的工作量。而 v-show 除了在初始创建开销时之外没有额外的开销。如果希望频繁地切换某些内容，那么 v-show 会是最好的选择。
 <a name="73gG8"></a>
 
-# 二、响应式
+# 响应式
 
 vue data 的响应式是在 vue 实例初始化时添加了 getter/setter 方法，类似 js
 
@@ -41,9 +41,9 @@ Object.defineProperty(obj, prop, descriptor)
   console.log( obj.newKey ); //change value
 ```
 
-# 三、路由
+# 路由
 
-# 四、监听（watch）
+# 监听（watch）
 
 - 监听 data 对象中的某个属性
   有些时候会将一个对象存储在 data 中，监听这个对象的某个属性
@@ -76,7 +76,7 @@ watch: {
 }
 ```
 
-# 五、过滤器（filters）
+# 过滤器（filters）
 
 - 表达式中可以采用链式写法使用多个过滤器
 
@@ -185,7 +185,7 @@ filters: {
   </script>
   ```
 
-  # 自定义指令
+# 自定义指令
 
   1. 钩子函数
 
@@ -236,7 +236,7 @@ filters: {
   > modifiers: {}
   > vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder
 
-  # 组件
+# 组件
 
   ![](https://cdn.jsdelivr.net/gh/DongLee0504/imgs/企业微信截图_20200420111509.jpg)
 
@@ -274,5 +274,23 @@ filters: {
     })
   </script>
   ```
+# vue-loader
+  1. 处理资源路径
+    ``` javascript
+    <img src="../image.png">
+    ```
+    将会编译为
+    ``` javascript
+    createElement('img', {
+      attrs: {
+        src: require('../image.png') // 现在这是一个模块的请求了
+      }
+    })
+    ```
+    相关loader： file-loader（打包时文件路径正确，相对路径部署时url正确），url-loader（小文件转换为base64）
+  2. scoped css
+    当style是scoped，p{color: red} 会慢很多，应以class或id代替
+    深度作用选择器： >>> 
+  3. css modules
 
 
