@@ -287,10 +287,14 @@ filters: {
       }
     })
     ```
-    相关loader： file-loader（打包时文件路径正确，相对路径部署时url正确），url-loader（小文件转换为base64）
+    相关loader： file-loader（打包时文件路径正确，相对路径部署时url正确），url-loader（小文件转换为base64,有效减少http请求）
   2. scoped css
     当style是scoped，p{color: red} 会慢很多，应以class或id代替
     深度作用选择器： >>> 
   3. css modules
+# vue-x
+  1. state
+   获取state的方法
+   
 
 
