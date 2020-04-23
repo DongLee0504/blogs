@@ -295,6 +295,47 @@ filters: {
 # vue-x
   1. state
    获取state的方法
+   ``` JavaScript
+   computed:{
+    counter() {
+      return this.$store.state.count
+    }
+  }
+   ```
+   辅助函数 mapState
+   ``` javascript
+   computed: mapState(['count']),
+
+   // 等同于
+   computed: mapState({
+    count: state => state.count
+   }),
+   ```
+   当computed里面的变量既依赖本地的data又依赖store的state
+   ```javascript
+   computed:{
+    counter() {
+      return this.data.xxx
+    },
+    ...mapState(['count'])
+  },
+   ```
+   2. getter
+   就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+   3. mutation
+   * <b>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</b>
+   * 同步变更state
+   * 辅助函数
+      组件中这样写，那么如何将payload传入mutation
+   ```javascript
+   methods: mapMutations(['addTodo'])
+   ```
+   这样就可以
+   ```javascript
+   <button @click="addTodo({todo: {id: 1, text:'', done: true}})">addTodo</button>
+   ```
+   
+   
    
 
 
