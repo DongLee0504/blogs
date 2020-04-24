@@ -334,7 +334,30 @@ filters: {
    ```javascript
    <button @click="addTodo({todo: {id: 1, text:'', done: true}})">addTodo</button>
    ```
-   
+   4. action
+    * <b>action 处理异步操作</b>
+    * 异步操作如何知道action什么时候完成 -- action返回promise
+    ```javascript
+    actions: {
+      incrementAsync2({ commit }) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            commit("increment");
+            resolve()
+          }, 5000);
+        });
+      }
+    }
+    ```
+    组件中
+    
+    ```javascript
+    incrementAsync2() {
+      this.$store.dispatch('incrementAsync2').then(() => {
+        console.log('action 完成')
+      })
+    }
+    ``` 
    
    
 
