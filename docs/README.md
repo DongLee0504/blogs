@@ -7,7 +7,7 @@
 * [vue](vue/vue.md)
   * [debounce](vue/debounce.md)
 * [css](CSS/flex.md)
-  * [css](CSS/flex.md)
+  * [flex](CSS/flex.md)
 ---
 * 本地启动
 ```
