@@ -22,5 +22,6 @@
   - [程序更新](Electron/程序更新.md)
 
 - [node](node/node_mysql.md)
-  - [node](node/node_mysql.md)
+  - [node_mysql](node/node_mysql.md)
   - [node](node/nodejs.md)
+  - [pm2](node/pm2.md)
