@@ -3,6 +3,7 @@
   - [工作总结](javascript/工作总结.md)
   - [知识总结](javascript/知识总结.md)
   - [web worker](javascript/web_worker.md)
+  - [clean code](javascript/clean_code.md)
 
 - [vue](vue/vue.md)
 
