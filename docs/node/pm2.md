@@ -6,15 +6,21 @@
 
 - .保存您的进程列表
 
-```
-pm2 save
-```
+  ```
+  pm2 save
+  ```
 
 - 开机自启动
 
-```
-pm2 startup
-```
+  ```
+  pm2 startup
+  ```
+
+- 恢复服务（save 过的服务）
+  ```
+  pm2 resurrect
+  ```
+  [https://github.com/Unitech/pm2/issues/2775](https://github.com/Unitech/pm2/issues/2775)
 
 # linux 下安装 node
 
@@ -39,26 +45,20 @@ sudo ln -s /home/yztapp1/node-v10.9.0-linux-x64/bin/node  /usr/bin/node
 
 - Windows
 
-```
-npm install -g supervisor
-```
+  ```
+  npm install -g supervisor
+  ```
 
 - Linux 或者 mac
 
-```
-sudo npm install -g supervisor
-```
+  ```
+  sudo npm install -g supervisor
+  ```
 
 ## 启动项目
 
-项目根目录下
+- 项目根目录下
 
-```
-supervisor myapp
-```
-
-## 更多方法
-
-```
-supervisor
-```
+  ```
+  supervisor myapp
+  ```
