@@ -188,95 +188,100 @@ filters: {
 
 # 自定义指令
 
-  1. 钩子函数
+1. 钩子函数
 
-  - bind 钩子函数会在指令绑定到元素时被调用。
-  - inseted 钩子会在绑定的元素被添加到父节点时被调用一一但和 mounted 一样，
-    此时还不能保证元素已经被添加到 DOM 上。可以使用 this.\$nextTick 来保证
-    这一点。
-  - update 钩子会在绑定该指令的组件节点被更新时调用，但是该组件的子组件可能
-    此时还未更新。
-  - componentUpdated 钩子和 updated 钩子类似，但它会在组件的子组件都更新完成
-    后调用。
-  - unbind 钩子用于指令的拆除，当指令从元素上解绑时会被调用。
+- bind 钩子函数会在指令绑定到元素时被调用。
+- inseted 钩子会在绑定的元素被添加到父节点时被调用一一但和 mounted 一样，
+  此时还不能保证元素已经被添加到 DOM 上。可以使用 this.\$nextTick 来保证
+  这一点。
+- update 钩子会在绑定该指令的组件节点被更新时调用，但是该组件的子组件可能
+  此时还未更新。
+- componentUpdated 钩子和 updated 钩子类似，但它会在组件的子组件都更新完成
+  后调用。
+- unbind 钩子用于指令的拆除，当指令从元素上解绑时会被调用。
 
-  ```javascript
-    <div id="app">
-      <div v-demo="counter"></div>
-    </div>
+```javascript
+  <div id="app">
+    <div v-demo="counter"></div>
+  </div>
 
-    <script>
-    new Vue({
-      el: '#app',
-      data: {
-        counter: 0
-      },
-      directives: {
-        demo: {
-          bind: function (el, binding, vnode) {
-            var s = JSON.stringify
-            el.innerHTML =
-              'name: ' + s(binding.name) + '<br>' +
-              'value: ' + s(binding.value) + '<br>' +
-              'expression: ' + s(binding.expression) + '<br>' +
-              'argument: ' + s(binding.arg) + '<br>' +
-              'modifiers: ' + s(binding.modifiers) + '<br>' +
-              'vnode keys: ' + Object.keys(vnode).join(', ')
-          }
+  <script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    directives: {
+      demo: {
+        bind: function (el, binding, vnode) {
+          var s = JSON.stringify
+          el.innerHTML =
+            'name: ' + s(binding.name) + '<br>' +
+            'value: ' + s(binding.value) + '<br>' +
+            'expression: ' + s(binding.expression) + '<br>' +
+            'argument: ' + s(binding.arg) + '<br>' +
+            'modifiers: ' + s(binding.modifiers) + '<br>' +
+            'vnode keys: ' + Object.keys(vnode).join(', ')
         }
       }
-    })
-  </script>
-  ```
+    }
+  })
+</script>
+```
 
-  > 输出
-  > name: "demo"
-  > value: 0
-  > expression: "counter"
-  > argument: undefined
-  > modifiers: {}
-  > vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder
+> 输出
+> name: "demo"
+> value: 0
+> expression: "counter"
+> argument: undefined
+> modifiers: {}
+> vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder
 
 # 组件
 
-  ![](https://cdn.jsdelivr.net/gh/DongLee0504/imgs/企业微信截图_20200420111509.jpg)
+![](https://cdn.jsdelivr.net/gh/DongLee0504/imgs/企业微信截图_20200420111509.jpg)
 
-  1.  数据流和.sync修饰符
-  数据通过prop从父组件传到子组件是<b>单向的</b>
-  如果需要双向绑定，需要sync
-  2. 插槽
-  父组件向子组件传递数据（主要是html模板）
-  默认插槽和具名插槽好理解，主要看下作用域(子组件插槽的数据要传递给父组件展示)
-  ``` javascript
-  <child>
-    <!-- scope可以随便命名，只是得到插槽对象 -->
-    <template v-slot="scope">
-      {{scope.item}}
-    </template>
-  </child>
+1.  数据流和.sync 修饰符
+    数据通过 prop 从父组件传到子组件是<b>单向的</b>
+    如果需要双向绑定，需要 sync
+2.  插槽
+    父组件向子组件传递数据（主要是 html 模板）
+    默认插槽和具名插槽好理解，主要看下作用域(子组件插槽的数据要传递给父组件展示)
 
-  <script>
-    new Vue({
-      el: '#app',
-      data: {
-        counter: 0
-      },
-      components: {
-        Child: {
-          data() {
-            return {
-              list: [1, 2, 3]
-            }
-          },
-          template: '<ul> <li v-for="(item, index) in list" :key="index"><slot :item="item"></slot></li></ul>'
-        }
+```javascript
+<child>
+  <!-- scope可以随便命名，只是得到插槽对象 -->
+  <template v-slot="scope">
+    {{scope.item}}
+  </template>
+</child>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    components: {
+      Child: {
+        data() {
+          return {
+            list: [1, 2, 3]
+          }
+        },
+        template: '<ul> <li v-for="(item, index) in list" :key="index"><slot :item="item"></slot></li></ul>'
       }
+    }
 
-    })
-  </script>
-  ```
+  })
+</script>
+```
+
 # vue-loader
-  1. 处理资源路径
+
+1. 处理资源路径
+
+
     ``` javascript
     <img src="../image.png">
     ```
@@ -289,16 +294,20 @@ filters: {
     })
     ```
     相关loader： file-loader（打包时文件路径正确，相对路径部署时url正确），url-loader（小文件转换为base64,有效减少http请求）
-  2. scoped css
-    当style是scoped，p{color: red} 会慢很多，应以class或id代替
-    深度作用选择器： >>> 
-  3. css modules
+
+2. scoped css
+   当 style 是 scoped，p{color: red} 会慢很多，应以 class 或 id 代替
+   深度作用选择器： >>>
+3. css modules
+
 # EventBus
-``` javascript
-  // main.js
-  Vue.prototype.$EventBus = new Vue()
+
+```javascript
+// main.js
+Vue.prototype.$EventBus = new Vue();
 ```
-``` javascript
+
+```javascript
   // a.Vue
   methods:{
     addEvent() {
@@ -308,50 +317,64 @@ filters: {
 ```
 
 # vue-x
-  1. state
-   获取state的方法
-   ``` JavaScript
-   computed:{
-    counter() {
-      return this.$store.state.count
-    }
-  }
-   ```
-   辅助函数 mapState
-   ``` javascript
-   computed: mapState(['count']),
 
-   // 等同于
-   computed: mapState({
-    count: state => state.count
-   }),
-   ```
-   当computed里面的变量既依赖本地的data又依赖store的state
-   ```javascript
-   computed:{
-    counter() {
-      return this.data.xxx
-    },
-    ...mapState(['count'])
-  },
-   ```
-   2. getter
-   就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
-   3. mutation
-   * <b>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</b>
-   * 同步变更state
-   * 辅助函数
-      组件中这样写，那么如何将payload传入mutation
-   ```javascript
-   methods: mapMutations(['addTodo'])
-   ```
-   这样就可以
-   ```javascript
-   <button @click="addTodo({todo: {id: 1, text:'', done: true}})">addTodo</button>
-   ```
-   4. action
-    * <b>action 处理异步操作</b>
-    * 异步操作如何知道action什么时候完成 -- action返回promise
+1. state
+   获取 state 的方法
+
+```JavaScript
+computed:{
+ counter() {
+   return this.$store.state.count
+ }
+}
+```
+
+辅助函数 mapState
+
+```javascript
+computed: mapState(['count']),
+
+// 等同于
+computed: mapState({
+ count: state => state.count
+}),
+```
+
+当 computed 里面的变量既依赖本地的 data 又依赖 store 的 state
+
+```javascript
+computed:{
+ counter() {
+   return this.data.xxx
+ },
+ ...mapState(['count'])
+},
+```
+
+2.  getter
+    就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+3.  mutation
+
+- <b>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</b>
+- 同步变更 state
+- 辅助函数
+  组件中这样写，那么如何将 payload 传入 mutation
+
+```javascript
+methods: mapMutations(["addTodo"]);
+```
+
+这样就可以
+
+```javascript
+<button @click="addTodo({todo: {id: 1, text:'', done: true}})">addTodo</button>
+```
+
+4.  action
+    - <b>action 处理异步操作</b>
+    - 异步操作如何知道 action 什么时候完成 -- action 返回 promise
+
+
     ```javascript
     actions: {
       incrementAsync2({ commit }) {
@@ -365,17 +388,14 @@ filters: {
     }
     ```
     组件中
-    
+
     ```javascript
     incrementAsync2() {
       this.$store.dispatch('incrementAsync2').then(() => {
         console.log('action 完成')
       })
     }
-    ``` 
-   
-   
-
+    ```
 
 # vue 学习笔记
 
@@ -567,95 +587,100 @@ filters: {
 
 # 自定义指令
 
-  1. 钩子函数
+1. 钩子函数
 
-  - bind 钩子函数会在指令绑定到元素时被调用。
-  - inseted 钩子会在绑定的元素被添加到父节点时被调用一一但和 mounted 一样，
-    此时还不能保证元素已经被添加到 DOM 上。可以使用 this.\$nextTick 来保证
-    这一点。
-  - update 钩子会在绑定该指令的组件节点被更新时调用，但是该组件的子组件可能
-    此时还未更新。
-  - componentUpdated 钩子和 updated 钩子类似，但它会在组件的子组件都更新完成
-    后调用。
-  - unbind 钩子用于指令的拆除，当指令从元素上解绑时会被调用。
+- bind 钩子函数会在指令绑定到元素时被调用。
+- inseted 钩子会在绑定的元素被添加到父节点时被调用一一但和 mounted 一样，
+  此时还不能保证元素已经被添加到 DOM 上。可以使用 this.\$nextTick 来保证
+  这一点。
+- update 钩子会在绑定该指令的组件节点被更新时调用，但是该组件的子组件可能
+  此时还未更新。
+- componentUpdated 钩子和 updated 钩子类似，但它会在组件的子组件都更新完成
+  后调用。
+- unbind 钩子用于指令的拆除，当指令从元素上解绑时会被调用。
 
-  ```javascript
-    <div id="app">
-      <div v-demo="counter"></div>
-    </div>
+```javascript
+  <div id="app">
+    <div v-demo="counter"></div>
+  </div>
 
-    <script>
-    new Vue({
-      el: '#app',
-      data: {
-        counter: 0
-      },
-      directives: {
-        demo: {
-          bind: function (el, binding, vnode) {
-            var s = JSON.stringify
-            el.innerHTML =
-              'name: ' + s(binding.name) + '<br>' +
-              'value: ' + s(binding.value) + '<br>' +
-              'expression: ' + s(binding.expression) + '<br>' +
-              'argument: ' + s(binding.arg) + '<br>' +
-              'modifiers: ' + s(binding.modifiers) + '<br>' +
-              'vnode keys: ' + Object.keys(vnode).join(', ')
-          }
+  <script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    directives: {
+      demo: {
+        bind: function (el, binding, vnode) {
+          var s = JSON.stringify
+          el.innerHTML =
+            'name: ' + s(binding.name) + '<br>' +
+            'value: ' + s(binding.value) + '<br>' +
+            'expression: ' + s(binding.expression) + '<br>' +
+            'argument: ' + s(binding.arg) + '<br>' +
+            'modifiers: ' + s(binding.modifiers) + '<br>' +
+            'vnode keys: ' + Object.keys(vnode).join(', ')
         }
       }
-    })
-  </script>
-  ```
+    }
+  })
+</script>
+```
 
-  > 输出
-  > name: "demo"
-  > value: 0
-  > expression: "counter"
-  > argument: undefined
-  > modifiers: {}
-  > vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder
+> 输出
+> name: "demo"
+> value: 0
+> expression: "counter"
+> argument: undefined
+> modifiers: {}
+> vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder
 
 # 组件
 
-  ![](https://cdn.jsdelivr.net/gh/DongLee0504/imgs/企业微信截图_20200420111509.jpg)
+![](https://cdn.jsdelivr.net/gh/DongLee0504/imgs/企业微信截图_20200420111509.jpg)
 
-  1.  数据流和.sync修饰符
-  数据通过prop从父组件传到子组件是<b>单向的</b>
-  如果需要双向绑定，需要sync
-  2. 插槽
-  父组件向子组件传递数据（主要是html模板）
-  默认插槽和具名插槽好理解，主要看下作用域(子组件插槽的数据要传递给父组件展示)
-  ``` javascript
-  <child>
-    <!-- scope可以随便命名，只是得到插槽对象 -->
-    <template v-slot="scope">
-      {{scope.item}}
-    </template>
-  </child>
+1.  数据流和.sync 修饰符
+    数据通过 prop 从父组件传到子组件是<b>单向的</b>
+    如果需要双向绑定，需要 sync
+2.  插槽
+    父组件向子组件传递数据（主要是 html 模板）
+    默认插槽和具名插槽好理解，主要看下作用域(子组件插槽的数据要传递给父组件展示)
 
-  <script>
-    new Vue({
-      el: '#app',
-      data: {
-        counter: 0
-      },
-      components: {
-        Child: {
-          data() {
-            return {
-              list: [1, 2, 3]
-            }
-          },
-          template: '<ul> <li v-for="(item, index) in list" :key="index"><slot :item="item"></slot></li></ul>'
-        }
+```javascript
+<child>
+  <!-- scope可以随便命名，只是得到插槽对象 -->
+  <template v-slot="scope">
+    {{scope.item}}
+  </template>
+</child>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    components: {
+      Child: {
+        data() {
+          return {
+            list: [1, 2, 3]
+          }
+        },
+        template: '<ul> <li v-for="(item, index) in list" :key="index"><slot :item="item"></slot></li></ul>'
       }
+    }
 
-    })
-  </script>
-  ```
+  })
+</script>
+```
+
 # vue-loader
-  1. 处理资源路径
+
+1. 处理资源路径
+
+
     ``` javascript
     <img src="../image.png">
     ```
@@ -668,16 +693,20 @@ filters: {
     })
     ```
     相关loader： file-loader（打包时文件路径正确，相对路径部署时url正确），url-loader（小文件转换为base64,有效减少http请求）
-  2. scoped css
-    当style是scoped，p{color: red} 会慢很多，应以class或id代替
-    深度作用选择器： >>> 
-  3. css modules
+
+2. scoped css
+   当 style 是 scoped，p{color: red} 会慢很多，应以 class 或 id 代替
+   深度作用选择器： >>>
+3. css modules
+
 # EventBus -- 事假总线
-``` javascript
-  // main.js
-  Vue.prototype.$EventBus = new Vue()
+
+```javascript
+// main.js
+Vue.prototype.$EventBus = new Vue();
 ```
-``` javascript
+
+```javascript
   // a.Vue
   methods:{
     addEvent() {
@@ -685,7 +714,8 @@ filters: {
     }
   }
 ```
-``` javascript
+
+```javascript
   // App.Vue
   mounted() {
     this.$EventBus.$on('addEvent', data => {
@@ -695,50 +725,64 @@ filters: {
 ```
 
 # vue-x
-  1. state
-   获取state的方法
-   ``` JavaScript
-   computed:{
-    counter() {
-      return this.$store.state.count
-    }
-  }
-   ```
-   辅助函数 mapState
-   ``` javascript
-   computed: mapState(['count']),
 
-   // 等同于
-   computed: mapState({
-    count: state => state.count
-   }),
-   ```
-   当computed里面的变量既依赖本地的data又依赖store的state
-   ```javascript
-   computed:{
-    counter() {
-      return this.data.xxx
-    },
-    ...mapState(['count'])
-  },
-   ```
-   2. getter
-   就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
-   3. mutation
-   * <b>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</b>
-   * 同步变更state
-   * 辅助函数
-      组件中这样写，那么如何将payload传入mutation
-   ```javascript
-   methods: mapMutations(['addTodo'])
-   ```
-   这样就可以
-   ```javascript
-   <button @click="addTodo({todo: {id: 1, text:'', done: true}})">addTodo</button>
-   ```
-   4. action
-    * <b>action 处理异步操作</b>
-    * 异步操作如何知道action什么时候完成 -- action返回promise
+1. state
+   获取 state 的方法
+
+```JavaScript
+computed:{
+ counter() {
+   return this.$store.state.count
+ }
+}
+```
+
+辅助函数 mapState
+
+```javascript
+computed: mapState(['count']),
+
+// 等同于
+computed: mapState({
+ count: state => state.count
+}),
+```
+
+当 computed 里面的变量既依赖本地的 data 又依赖 store 的 state
+
+```javascript
+computed:{
+ counter() {
+   return this.data.xxx
+ },
+ ...mapState(['count'])
+},
+```
+
+2.  getter
+    就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+3.  mutation
+
+- <b>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</b>
+- 同步变更 state
+- 辅助函数
+  组件中这样写，那么如何将 payload 传入 mutation
+
+```javascript
+methods: mapMutations(["addTodo"]);
+```
+
+这样就可以
+
+```javascript
+<button @click="addTodo({todo: {id: 1, text:'', done: true}})">addTodo</button>
+```
+
+4.  action
+    - <b>action 处理异步操作</b>
+    - 异步操作如何知道 action 什么时候完成 -- action 返回 promise
+
+
     ```javascript
     actions: {
       incrementAsync2({ commit }) {
@@ -752,15 +796,11 @@ filters: {
     }
     ```
     组件中
-    
+
     ```javascript
     incrementAsync2() {
       this.$store.dispatch('incrementAsync2').then(() => {
         console.log('action 完成')
       })
     }
-    ``` 
-   
-   
-
-
+    ```
