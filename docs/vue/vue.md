@@ -341,7 +341,7 @@ export default {
   components: {
     child: {
       template: '<div><grand v-bind="$attrs"></grand></div>',
-      props:['age'],
+      props: ["age"],
       components: {
         grand: {
           template: "<div></div>",
@@ -358,8 +358,61 @@ export default {
 };
 </script>
 ```
+
 ![](https://cdn.jsdelivr.net/gh/DongLee0504/imgs/20200622144110.png)
-$attrs可以访问到被绑定的属性（props中申明的除外），通过`v-bind="$attrs"`可以将属性传递到孙组件
+\$attrs 可以访问到被绑定的属性（props 中申明的除外），通过`v-bind="$attrs"`可以将属性传递到孙组件
+
+# require.context
+
+- 当一个 js 里面需要手动引入过多的其他文件夹里面的文件时，就可以使用
+- 在 Vue 项目开发过程中，我们可能会遇到这些可能会用到`require.context`的场景
+  - 当我们路由页面比较多的时候，可能会将路由文件拆分成多个，然后再通过`import`引入到`index.js`路由主入口文件中
+  - 开发了一系列基础组件，然后把所有组件都导入到`index.js`中，然后再放入一个数组中，通过遍历数组将所有组件进行安装。
+  - 当使用`svg symbol`时候，需要将所有的 svg 图片导入到系统中（建议使用`svg-sprite-loader`）
+- 常规操作
+  ![](https://user-gold-cdn.xitu.io/2020/6/12/172a8dbf913be740?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+- `require.context`基本语法
+  ![](https://user-gold-cdn.xitu.io/2020/6/12/172a900bd9c4737a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+- 通过`require.context`安装 Vue 组件
+  ![](https://user-gold-cdn.xitu.io/2020/6/12/172a907e5f763528?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+# 自定义`.sync`
+
+- 自定义`.sync`需要属性+事件（`update:属性名`）
+
+  ```vue
+  <template>
+  <div >
+    <MyMask :visible.sync="visible"></MyMask>
+  </div>
+  </template>
+  <script>
+  export default {
+  data() {
+    return {
+      visible: true
+    }
+  },
+  components: {
+    MyMask: {
+      template: '<div v-if="visible" @click="handleClick">i am mask</div>',
+      props: {
+        visible: {
+          type: Boolean,
+          default: false
+        }
+      },
+      methods: {
+        handleClick() {
+          this.$emit('update:visible', false)
+        }
+      }
+    }
+  }
+  }
+  </script>
+
+  ```
 
 # vue-x
 
