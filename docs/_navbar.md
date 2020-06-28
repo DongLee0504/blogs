@@ -1,18 +1,18 @@
-- [javascript](javascript/工作总结.md)
+- [Javascript](Javascript/工作总结.md)
 
-  - [工作总结](javascript/工作总结.md)
-  - [知识总结](javascript/知识总结.md)
-  - [web worker](javascript/web_worker.md)
-  - [clean code](javascript/clean_code.md)
+  - [工作总结](Javascript/工作总结.md)
+  - [知识总结](Javascript/知识总结.md)
+  - [web worker](Javascript/web_worker.md)
+  - [clean code](Javascript/clean_code.md)
 
-- [vue](vue/vue.md)
+- [Vue](Vue/vue.md)
 
-  - [vue](vue/vue.md)
-  - [debounce](vue/debounce.md)
+  - [vue](Vue/vue.md)
+  - [debounce](Vue/debounce.md)
 
-- [css](CSS/flex.md)
+- [Css](CSS/flex.md)
 
-  - [css](CSS/flex.md)
+  - [flex](CSS/flex.md)
 
 - [D3](D3/d3.md)
 
@@ -23,11 +23,11 @@
 
   - [程序更新](Electron/程序更新.md)
 
-- [node](node/node_mysql.md)
+- [Node](Node/node_mysql.md)
 
-  - [node_mysql](node/node_mysql.md)
-  - [node](node/nodejs.md)
-  - [pm2](node/pm2.md)
+  - [node_mysql](Node/node_mysql.md)
+  - [node](Node/nodejs.md)
+  - [pm2](Node/pm2.md)
 
 - [React](React/create-react-app.md)
   - [create-react-app](React/create-react-app.md)
