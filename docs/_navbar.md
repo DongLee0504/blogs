@@ -31,3 +31,4 @@
 
 - [React](React/create-react-app.md)
   - [create-react-app](React/create-react-app.md)
+  - [react-redux](React/react-redux.md)
