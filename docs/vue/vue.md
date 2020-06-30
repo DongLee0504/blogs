@@ -241,12 +241,12 @@ filters: {
 
 ![](https://cdn.jsdelivr.net/gh/DongLee0504/imgs/企业微信截图_20200420111509.jpg)
 
-1.  数据流和.sync 修饰符
-    数据通过 prop 从父组件传到子组件是<b>单向的</b>
-    如果需要双向绑定，需要 sync
-2.  插槽
-    父组件向子组件传递数据（主要是 html 模板）
-    默认插槽和具名插槽好理解，主要看下作用域(子组件插槽的数据要传递给父组件展示)
+- 1.  数据流和.sync 修饰符
+      数据通过 prop 从父组件传到子组件是<b>单向的</b>
+      如果需要双向绑定，需要 sync
+- 2.  插槽
+      父组件向子组件传递数据（主要是 html 模板）
+      默认插槽和具名插槽好理解，主要看下作用域(子组件插槽的数据要传递给父组件展示)
 
 ```javascript
 <child>
@@ -276,6 +276,8 @@ filters: {
   })
 </script>
 ```
+
+- 参考 [https://juejin.im/post/5ef6d1325188252e75366ab5](https://juejin.im/post/5ef6d1325188252e75366ab5)
 
 # vue-loader
 
@@ -382,36 +384,104 @@ export default {
 
   ```vue
   <template>
-  <div >
-    <MyMask :visible.sync="visible"></MyMask>
-  </div>
+    <div>
+      <MyMask :visible.sync="visible"></MyMask>
+    </div>
   </template>
   <script>
   export default {
-  data() {
-    return {
-      visible: true
-    }
-  },
-  components: {
-    MyMask: {
-      template: '<div v-if="visible" @click="handleClick">i am mask</div>',
-      props: {
-        visible: {
-          type: Boolean,
-          default: false
-        }
+    data() {
+      return {
+        visible: true,
+      };
+    },
+    components: {
+      MyMask: {
+        template: '<div v-if="visible" @click="handleClick">i am mask</div>',
+        props: {
+          visible: {
+            type: Boolean,
+            default: false,
+          },
+        },
+        methods: {
+          handleClick() {
+            this.$emit("update:visible", false);
+          },
+        },
       },
-      methods: {
-        handleClick() {
-          this.$emit('update:visible', false)
-        }
-      }
-    }
-  }
-  }
+    },
+  };
   </script>
+  ```
 
+# hook
+
+- 监听组件本身的生命周期
+
+  ```js
+  export default {
+    mounted() {
+      // 监听组件销毁
+      this.$once("hook:beforeDestroy", () => {
+        // doSomething
+      });
+    },
+  };
+  ```
+
+- 监听子组件生命周期
+  ```js
+  <custom-select @hook:updated="$_handleSelectUpdated" />
+  ```
+
+# observable（轻量级 vuex）
+
+- 创建 store
+
+  ```es6
+  import Vue from "vue";
+
+  // 通过Vue.observable创建一个可响应的对象
+  export const store = Vue.observable({
+    userInfo: {},
+    roleIds: [],
+  });
+
+  // 定义 mutations, 修改属性
+  export const mutations = {
+    setUserInfo(userInfo) {
+      store.userInfo = userInfo;
+    },
+    setRoleIds(roleIds) {
+      store.roleIds = roleIds;
+    },
+  };
+  ```
+
+- 组件中使用
+
+  ```es6
+  <template>
+    <div>
+      {{ userInfo.name }}
+    </div>
+  </template>
+  <script>
+  import { store, mutations } from "../store";
+  export default {
+    computed: {
+      userInfo() {
+        return store.userInfo;
+      },
+    },
+    created() {
+      mutations.setUserInfo({
+        name: "子君",
+      });
+    },
+  };
+  </script>
   ```
 
 # vue-x
@@ -421,9 +491,9 @@ export default {
 
 ```JavaScript
 computed:{
- counter() {
-   return this.$store.state.count
- }
+counter() {
+ return this.$store.state.count
+}
 }
 ```
 
