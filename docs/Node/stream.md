@@ -33,3 +33,4 @@
 当生产者写入速度过快，把队列池装满了之后，就会出现「背压」，这个时候是需要告诉生产者暂停生产的，当队列释放之后，Writable Stream 会给生产者发送一个 drain 消息，让它恢复生产
 # 参考
 - [https://www.barretlee.com/blog/2017/06/06/dive-to-nodejs-at-stream-module/](https://www.barretlee.com/blog/2017/06/06/dive-to-nodejs-at-stream-module/)
+- [https://javascript.ruanyifeng.com/nodejs/stream.html](https://javascript.ruanyifeng.com/nodejs/stream.html)
