@@ -28,6 +28,7 @@
   - [node_mysql](Node/node_mysql.md)
   - [node](Node/nodejs.md)
   - [pm2](Node/pm2.md)
+  - [stream](Node/stream.md)
 
 - React
   - [create-react-app](React/create-react-app.md)
