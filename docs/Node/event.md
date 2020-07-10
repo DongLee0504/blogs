@@ -15,3 +15,26 @@ setTimeout(() => {
   duoduo.emit("bark");
 }, 5000);
 ```
+
+# removeListener 事件
+
+事件监听被添加前会触发自身的 'newListener' 事件
+
+```js
+const EventEmitter = require("events");
+const myEvents = new EventEmitter();
+// 在添加监听之前触发
+myEvents.once("newListener", function (event, listener) {
+  console.log("event:", event);
+});
+// 一个简单的 EventEmitter 实例，绑定了一个监听器。 eventEmitter.on() 用于注册监听器， eventEmitter.emit() 用于触发事件。
+myEvents.on("myEvents", function (a, b) {
+  console.log("触发事件", a, b);
+});
+myEvents.emit("myEvents", 1, 2);
+```
+
+输出
+
+> event: myEvents  
+> 触发事件 1 2
