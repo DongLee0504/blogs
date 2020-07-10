@@ -30,6 +30,7 @@
   - [pm2](Node/pm2.md)
   - [stream](Node/stream.md)
   - [querystring](Node/querystring.md)
+  - [event](Node/event.md)
 
 - React
   - [create-react-app](React/create-react-app.md)
