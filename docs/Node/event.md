@@ -16,7 +16,7 @@ setTimeout(() => {
 }, 5000);
 ```
 
-# removeListener 事件
+# newListener 事件
 
 事件监听被添加前会触发自身的 'newListener' 事件
 
