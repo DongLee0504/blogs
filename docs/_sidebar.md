@@ -9,6 +9,7 @@
 
   - [知识总结](Vue/vue.md)
   - [debounce](Vue/debounce.md)
+  - [递归组件](Vue/递归组件.md)
 
 - Css
 
