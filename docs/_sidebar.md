@@ -4,6 +4,7 @@
   - [知识总结](Javascript/知识总结.md)
   - [web worker](Javascript/web_worker.md)
   - [clean code](Javascript/clean_code.md)
+  - [util](Javascript/util.md)
 
 - Vue
 
