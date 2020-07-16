@@ -3,7 +3,7 @@
 
 - 本地启动
 
-```
+```js
   docsify serve docs
 ```
 
