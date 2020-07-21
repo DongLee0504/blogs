@@ -564,3 +564,9 @@ methods: mapMutations(["addTodo"]);
       })
     }
     ```
+
+# vue cli 2.x 字体丢失
+
+- 2.x 版本 build 后无法找到字体
+- 解决方案参考  
+  [https://github.com/vuejs-templates/webpack/issues/166](https://github.com/vuejs-templates/webpack/issues/166)
