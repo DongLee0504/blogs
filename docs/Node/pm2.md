@@ -4,23 +4,49 @@
 
 ## 启动挂钩
 
-- .保存您的进程列表
+## .保存您的进程列表
 
-  ```
-  pm2 save
-  ```
+```
+pm2 save
+```
 
-- 开机自启动
+## 开机自启动
 
-  ```
-  pm2 startup
-  ```
+```
+pm2 startup
+```
 
-- 恢复服务（save 过的服务）
+## 恢复服务（save 过的服务）
+
+```
+pm2 resurrect
+```
+
+[https://github.com/Unitech/pm2/issues/2775](https://github.com/Unitech/pm2/issues/2775)
+
+## 指定 env
+
+- 配置文件
+  ```js
+  module.exports = {
+    apps: [
+      {
+        name: "myapp",
+        script: "./app.js",
+        watch: true,
+        env: {
+          PORT: 3000,
+          NODE_ENV: "development",
+        },
+        env_production: {
+          PORT: 80,
+          NODE_ENV: "production",
+        },
+      },
+    ],
+  };
   ```
-  pm2 resurrect
-  ```
-  [https://github.com/Unitech/pm2/issues/2775](https://github.com/Unitech/pm2/issues/2775)
+- env 为默认环境，我们可以指定环境 `pm2 start ecosystem.config.js --env production`
 
 # linux 下安装 node
 
