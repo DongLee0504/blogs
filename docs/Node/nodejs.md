@@ -73,8 +73,8 @@ setTimeout(function () {
 3. 自定义模块
 
 - 查找规则
-
-1. 内置模块和第三方模块 require('模块名')，从当前项目的 node_modules 查找，然后依次进入父目录，查找父目录下的 node_modules 目录；依次迭代，直到根目录下的 node_modules 目录。
+1. 优先查找内置模块
+2. 第三方模块遵循就近原则逐层上溯（可以在程序中打印 `module.paths` 查看具体查找路径）。直到根据 NODE_PATH 环境变量查找到文件系统根目录，具体过程可以参考官方文档[官方文档](http://nodejs.cn/api/modules.html#modules_loading_from_node_modules_folders)
 
 # 模板引擎
 
