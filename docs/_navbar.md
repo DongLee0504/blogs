@@ -33,6 +33,7 @@
   - [stream](Node/stream.md)
   - [querystring](Node/querystring.md)
   - [event](Node/event.md)
+  - [深入浅出node](Node/深入浅出node.md)
 
 - [React](React/create-react-app.md)
   - [create-react-app](React/create-react-app.md)
