@@ -43,3 +43,6 @@
 
 - 其他
   [github](其他/github.md)
+
+- 购房
+  [购房知识](购房知识/index.md)
