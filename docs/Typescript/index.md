@@ -68,6 +68,78 @@ myNum = "seven";
     age: 18,
   };
   ```
+
 - **变量比接口多或少属性都不行的**
-- 可选属性
-  
+- 可选属性 & 任意属性
+  ```ts
+  interface Person {
+    name: string;
+    age?: number;
+    [propName: string]: any;
+  }
+  const tom: Person = {
+    name: "Tom",
+    age: 18, // 可选属性
+    sex: "男", // 任意属性
+  };
+  ```
+- 只读属性
+  ```ts
+  interface Person {
+    readonly id: number; // 只读属性
+    name: string;
+    age?: number;
+    [propName: string]: any;
+  }
+  const tom: Person = {
+    id: 1,
+    name: "Tom",
+    age: 18,
+    sex: "男",
+  };
+  ```
+  **注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候**
+  ### 数组
+  - 『类型+方括号』表示法
+  - 数组泛型（Array<elemType>）
+  - 接口表示法
+  ```ts
+  interface NumberArray {
+    [index: number]: number;
+  }
+  let nums: NumberArray = [1, 2, 3];
+  ```
+  ### 函数类型
+  - 函数表达式
+  ```ts
+  let myFun: (x: number, y: number) => number = function (x: number, y: number): number {
+    return x + y;
+  };
+  ```
+  **在 TypeScript 的类型定义中，=> 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。**
+  - 接口定义函数
+  ```ts
+  interface SearchFun {
+    (source: string, subString: string): boolean;
+  }
+  let myFunc: SearchFun = function (source: string, subString: string) {
+    return source.search(subString) != -1;
+  };
+  ```
+  - 可选参数 & 参数默认值
+    **可选参数必须在必选参数后面**
+  - 剩余参数
+    **剩余参数必须放最后面**
+  - 重载
+  ```ts
+  function reverse(x: number): number;
+  function reverse(x: string): string;
+  function reverse(x: string | number): string | number {
+    if (typeof x === "number") {
+      return Number(x.toString().split("").reverse().join(""));
+    } else {
+      // 注意这里
+      return x.split("").reverse().join("");
+    }
+  }
+  ```
