@@ -48,4 +48,4 @@
   [购房知识](购房知识/index.md)
   
 - typescript
-  [typescript](typescript/index.md)
+  [typescript](Typescript/index.md)
