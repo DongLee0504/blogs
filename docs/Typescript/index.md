@@ -196,7 +196,7 @@ function reverse(x: string | number): string | number {
   ```
 
   上面代码因为访问了共同的属性，所以不会报错  
-  下面的代码就会报错
+   下面的代码就会报错
 
   ```ts
   interface Cat {
@@ -215,5 +215,52 @@ function reverse(x: string | number): string | number {
     run() {},
   };
   ```
+
   > Property 'run' does not exist on type 'Cat | Finish'.
-  Property 'run' does not exist on type 'Finish'.
+  > Property 'run' does not exist on type 'Finish'.
+  > 下面程序使用了类型断言，可以正常运行
+
+```ts
+interface Cat {
+  name: string;
+  run(): void;
+}
+interface Finish {
+  name: string;
+  swim(): void;
+}
+function getName(animal: Cat | Finish) {
+  (animal as Cat).run(); // 将 animal 断言为 Cat
+}
+const animal: Cat = {
+  name: "小胖",
+  run() {
+    console.log("i can run");
+  },
+};
+getName(animal);
+```
+
+# 进阶
+
+## 类型别名
+
+看下面代码
+
+```ts
+const ladies: { name: string; age: number }[] = [
+  { name: "wang", age: 18 },
+  { name: "liu", age: 18 },
+];
+```
+
+定义数组的对象时比较麻烦
+
+```ts
+type Lady = { name: string; age: number };
+const ladies: Lady[] = [
+  { name: "wang", age: 18 },
+  { name: "liu", age: 18 },
+];
+```
+可以使用`type`定义一个类型
