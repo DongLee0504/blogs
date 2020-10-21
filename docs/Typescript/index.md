@@ -263,4 +263,101 @@ const ladies: Lady[] = [
   { name: "liu", age: 18 },
 ];
 ```
+
 可以使用`type`定义一个类型
+
+## 字符串字面量类型
+
+```ts
+type EventNames = "click" | "scroll" | "mousemove";
+function handleEvent(ele: Element, event: EventNames) {
+  // do something
+}
+
+handleEvent(document.getElementById("hello"), "scroll"); // 没问题
+handleEvent(document.getElementById("world"), "dblclick"); // 报错，event 不能为 'dblclick'
+```
+
+## 枚举
+
+枚举（Enum）类型用于取值被限定在一定范围内的场景，比如一周只能有七天，颜色限定为红绿蓝等。
+
+```ts
+enum Days {
+  Sun,
+  Mon,
+  Tue,
+  Wed,
+  Thu,
+  Fri,
+  Sat,
+}
+```
+
+编译为
+
+```js
+"use strict";
+var Days;
+(function (Days) {
+  Days[(Days["Sun"] = 0)] = "Sun";
+  Days[(Days["Mon"] = 1)] = "Mon";
+  Days[(Days["Tue"] = 2)] = "Tue";
+  Days[(Days["Wed"] = 3)] = "Wed";
+  Days[(Days["Thu"] = 4)] = "Thu";
+  Days[(Days["Fri"] = 5)] = "Fri";
+  Days[(Days["Sat"] = 6)] = "Sat";
+})(Days || (Days = {}));
+```
+
+`Days` 对象为
+
+```json
+{
+  0: "Sun"
+  1: "Mon"
+  2: "Tue"
+  3: "Wed"
+  4: "Thu"
+  5: "Fri"
+  6: "Sat"
+  Fri: 5
+  Mon: 1
+  Sat: 6
+  Sun: 0
+  Thu: 4
+  Tue: 2
+  Wed: 3
+}
+```
+
+### 手动赋值
+
+```ts
+enum Days {
+  Sun = 7,
+  Mon = 1,
+  Tue,
+  Wed,
+  Thu,
+  Fri,
+  Sat,
+}
+```
+
+编译为
+
+```js
+"use strict";
+var Days;
+(function (Days) {
+    Days[Days["Sun"] = 7] = "Sun";
+    Days[Days["Mon"] = 1] = "Mon";
+    Days[Days["Tue"] = 2] = "Tue";
+    Days[Days["Wed"] = 3] = "Wed";
+    Days[Days["Thu"] = 4] = "Thu";
+    Days[Days["Fri"] = 5] = "Fri";
+    Days[Days["Sat"] = 6] = "Sat";
+})(Days || (Days = {}));
+```
+上面的例子中，未手动赋值的枚举项会接着上一个枚举项递增。
