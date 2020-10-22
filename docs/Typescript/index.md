@@ -351,13 +351,42 @@ enum Days {
 "use strict";
 var Days;
 (function (Days) {
-    Days[Days["Sun"] = 7] = "Sun";
-    Days[Days["Mon"] = 1] = "Mon";
-    Days[Days["Tue"] = 2] = "Tue";
-    Days[Days["Wed"] = 3] = "Wed";
-    Days[Days["Thu"] = 4] = "Thu";
-    Days[Days["Fri"] = 5] = "Fri";
-    Days[Days["Sat"] = 6] = "Sat";
+  Days[(Days["Sun"] = 7)] = "Sun";
+  Days[(Days["Mon"] = 1)] = "Mon";
+  Days[(Days["Tue"] = 2)] = "Tue";
+  Days[(Days["Wed"] = 3)] = "Wed";
+  Days[(Days["Thu"] = 4)] = "Thu";
+  Days[(Days["Fri"] = 5)] = "Fri";
+  Days[(Days["Sat"] = 6)] = "Sat";
 })(Days || (Days = {}));
 ```
+
 上面的例子中，未手动赋值的枚举项会接着上一个枚举项递增。
+
+## 类
+
+`ES5` 采用构造函数定义类  
+`ES6` 、 `TS` 采用 `class` 定义类
+
+### ES6 的 class
+
+```js
+"use strict";
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  run() {
+    console.log(`${this.name} can run`);
+  }
+}
+const cat = new Animal("tom");
+```
+- `class` 类必须有 `constructor` 函数，在实例化时自动执行，如不显示添加，js引擎会自动添加
+- `this` 为实例对象
+- > `cat.hasOwnProperty('name') // true`   
+  实例对象自身的属性
+- > `cat.hasOwnProperty('run') // false`  
+    `cat.__proto__.hasOwnProperty('run') // true`  
+    类的方法为原型对象的属性
+
