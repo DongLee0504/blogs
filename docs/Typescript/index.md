@@ -370,6 +370,8 @@ var Days;
 
 ### ES6 的 class
 
+#### 一般例子
+
 ```js
 "use strict";
 class Animal {
@@ -382,11 +384,29 @@ class Animal {
 }
 const cat = new Animal("tom");
 ```
-- `class` 类必须有 `constructor` 函数，在实例化时自动执行，如不显示添加，js引擎会自动添加
-- `this` 为实例对象
-- > `cat.hasOwnProperty('name') // true`   
-  实例对象自身的属性
-- > `cat.hasOwnProperty('run') // false`  
-    `cat.__proto__.hasOwnProperty('run') // true`  
-    类的方法为原型对象的属性
 
+- `class` 类必须有 `constructor` 函数，在实例化时自动执行，如不显示添加，js 引擎会自动添加
+- `this` 为实例对象
+- > `cat.hasOwnProperty('name') // true`  
+  > 实例对象自身的属性
+- > `cat.hasOwnProperty('run') // false`  
+  >  `cat.__proto__.hasOwnProperty('run') // true`  
+  >  类的方法为原型对象的属性
+
+#### 属性表达式
+
+```js
+"use strict";
+const methodName = "getProp";
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  run() {
+    console.log(`${this.name} can run`);
+  }
+  [methodName]() {
+    console.log(5555);
+  }
+}
+```
