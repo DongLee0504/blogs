@@ -44,6 +44,7 @@
 - [其他](其他/github.md)
 
   - [github](其他/github.md)
+  - [性能优化](其他/性能优化.md)
 
 - [购房知识](购房知识/index.md)
 - [Typescript](Typescript/index.md)
