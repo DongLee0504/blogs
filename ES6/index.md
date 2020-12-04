@@ -58,3 +58,43 @@ foo; // VM143:2 Uncaught ReferenceError: foo is not defined
 **对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。**
 
 ---
+
+## 注意点
+
+### 已经申明的变量解构赋值
+
+```js
+// 错误的写法
+let x;
+{x} = {x: 1};
+// SyntaxError: syntax error
+```
+
+JavaScript 引擎会将{x}理解成一个代码块，从而发生语法错误。只有不将大括号写在行首，避免 JavaScript 将其解释为代码块，才能解决这个问题。
+
+```js
+// 正确的写法
+let x;
+({ x } = { x: 1 });
+```
+
+### 对数组进行对象属性的解构
+
+```js
+let arr = [1, 2, 3];
+let { 0: first, [arr.length - 1]: last } = arr;
+first; // 1
+last; // 3
+```
+---
+# 字符串
+## 新增方法
+- includes()：返回布尔值，表示是否找到了参数字符串。
+- startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
+- endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。
+- repeat(): 方法返回一个新字符串，表示将原字符串重复n次。
+- padStart(): 头部补全
+- padEnd(): 尾部补全
+- trimStart(): 消除头部空格
+- trimEnd(): 消除尾部空格
+- replaceAll(regexp|substr, newSubstr|function): 一次性替换所有匹配 
