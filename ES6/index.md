@@ -86,15 +86,19 @@ let { 0: first, [arr.length - 1]: last } = arr;
 first; // 1
 last; // 3
 ```
+
 ---
+
 # 字符串
+
 ## 新增方法
+
 - includes()：返回布尔值，表示是否找到了参数字符串。
 - startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
 - endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。
-- repeat(): 方法返回一个新字符串，表示将原字符串重复n次。
+- repeat(): 方法返回一个新字符串，表示将原字符串重复 n 次。
 - padStart(): 头部补全
 - padEnd(): 尾部补全
 - trimStart(): 消除头部空格
 - trimEnd(): 消除尾部空格
-- replaceAll(regexp|substr, newSubstr|function): 一次性替换所有匹配 
+- replaceAll(regexp|substr, newSubstr|function): 一次性替换所有匹配
