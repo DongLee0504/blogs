@@ -7,15 +7,19 @@
   - [util](Javascript/util.md)
   - [H5 调用摄像头](Javascript/H5调用摄像头.md)
 
+- ES6
+
+  - [ES6](ES6/index.md)
+
 - Vue
 
   - [知识总结](Vue/vue.md)
   - [debounce](Vue/debounce.md)
   - [递归组件](Vue/递归组件.md)
 
-- Css
+- CSS
 
-  - [首页](CSS/index.md)
+  - [CSS](CSS/index.md)
   - [flex](CSS/flex.md)
 
 - D3

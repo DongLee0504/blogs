@@ -13,9 +13,9 @@
   - [debounce](Vue/debounce.md)
   - [递归组件](Vue/递归组件.md)
 
-- [Css](CSS/flex.md)
+- [CSS](CSS/flex.md)
 
-  - [首页](CSS/index.md)
+  - [CSS](CSS/index.md)
   - [flex](CSS/flex.md)
 
 - [D3](D3/d3.md)
