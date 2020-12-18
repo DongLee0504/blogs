@@ -104,6 +104,7 @@ last; // 3
 - replaceAll(regexp|substr, newSubstr|function): 一次性替换所有匹配
 
 ---
+
 # class
 
 ## 一般例子
@@ -145,4 +146,128 @@ class Animal {
     console.log(5555);
   }
 }
+```
+
+## class 表达式
+
+```js
+const MyClass = class Me {
+  getClassName() {
+    return Me.name;
+  }
+};
+```
+
+> `Me` 只能在内部使用，如果内部没有用到，`Me`可以省略  
+> 在外部只能用 `MyClass` 引用
+
+## this
+
+类的方法内部如果含有 this，**_它默认指向类的实例_**。但是，必须非常小心，一旦单独使用该方法，很可能报错。
+
+```js
+class Logger {
+  printName(name = "there") {
+    this.print(`Hello ${name}`);
+  }
+
+  print(text) {
+    console.log(text);
+  }
+}
+
+const logger = new Logger();
+const { printName } = logger;
+printName(); // TypeError: Cannot read property 'print' of undefined
+```
+
+上面代码中，printName 方法中的 this，默认指向 Logger 类的实例。但是，如果将这个方法提取出来单独使用，this 会指向该方法运行时所在的环境（由于 class 内部是严格模式，所以 this 实际指向的是 undefined），从而导致找不到 print 方法而报错。
+
+### 解决方案
+
+在构造方法中绑定 this (实例化时构造函数自动执行)
+
+```js
+class Logger {
+  constructor() {
+    this.printName = this.printName.bind(this);
+  }
+
+  // ...
+}
+```
+
+## 静态方法
+
+静态方法不被实例继承，类可以直接调用
+
+### 例 1
+
+```js
+class Foo {
+  static classMethod() {
+    return "hello";
+  }
+}
+
+Foo.classMethod(); // 'hello'
+
+var foo = new Foo();
+foo.classMethod();
+// Uncaught TypeError: foo.classMethod is not a function
+```
+
+### 例 2
+
+**_注意，如果静态方法包含 this 关键字，这个 this 指的是类，而不是实例。_**
+
+```js
+class Foo {
+  static bar() {
+    this.baz();
+  }
+  static baz() {
+    console.log("hello");
+  }
+  baz() {
+    console.log("world");
+  }
+}
+
+Foo.bar(); // hello
+```
+
+### 例 3
+
+父类的静态方法，可以被子类继承。
+
+```js
+class Foo {
+  static classMethod() {
+    return "hello";
+  }
+}
+
+class Bar extends Foo {}
+
+Bar.classMethod(); // 'hello'
+```
+
+## 实例属性的写法
+
+### 构造方法里面
+
+### 类的头部
+
+```js
+class Foo {
+  bar = "hello";
+  baz = "world";
+
+  constructor() {
+    console.log(this.bar);
+  }
+}
+const foo = new Foo();
+// hello
 ```
