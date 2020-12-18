@@ -46,12 +46,11 @@
   - [create-react-app](React/create-react-app.md)
   - [react-redux](React/react-redux.md)
 
+- 微信
+
+  - [微信支付](微信/微信支付.md)
+
 - 其他
 
   - [github](其他/github.md)
   - [性能优化](其他/性能优化.md)
-
-- 购房
-  - [购房知识](购房知识/index.md)
-- typescript
-  - [typescript](Typescript/index.md)
