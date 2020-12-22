@@ -271,3 +271,45 @@ class Foo {
 const foo = new Foo();
 // hello
 ```
+
+## 类的继承
+
+- 采用关键字 `extends`
+- 子类必须在`constructor`方法中调用 `super` 方法，否则新建实例时会报错。
+- 如果子类没有写`constructor`方法，`super` 会默认调用
+
+### 例 1
+
+```js
+class Point {
+  /* ... */
+}
+
+class ColorPoint extends Point {
+  constructor() {}
+}
+
+let cp = new ColorPoint();
+// Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+```
+
+上例中，子类 `constructor`方法没有调用 `super`，所以报错
+
+### 例 2
+
+```js
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y); // 调用父类 constructor 后才可以使用 this
+    this.color = color; // 正确
+    console.log(this.x);
+  }
+}
+```
