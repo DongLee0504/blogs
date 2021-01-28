@@ -50,6 +50,10 @@
 
   - [微信支付](微信/微信支付.md)
 
+- [插件](插件/plugin.md)
+
+  - [插件](插件/plugin.md)
+
 - [其他](其他/github.md)
 
   - [github](其他/github.md)
