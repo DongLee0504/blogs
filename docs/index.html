@@ -8,8 +8,65 @@
   <meta name="description" content="Description">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css"> -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
+  <style>
+    /* tabs */
+    .docsify-tabs__tab {
+      cursor: pointer;
+    }
+
+    [data-tab="chrome浏览器"]:before {
+      display: block;
+      height: 60px;
+      content: '';
+      background: url(https://assets.yiban.io/assets/imgs/download/logo-browser-chrome-0857504c03.png) no-repeat;
+      background-size: 60px auto;
+      background-position: center;
+    }
+    [data-tab="edge浏览器"]:before {
+      display: block;
+      height: 60px;
+      content: '';
+      background: url(https://assets.yiban.io/assets/imgs/download/logo-browser-edge-new-2a108a1df4.png) no-repeat;
+      background-size: 60px auto;
+      background-position: center;
+    }
+    [data-tab="qq浏览器"]:before {
+      display: block;
+      height: 60px;
+      content: '';
+      background: url(https://assets.yiban.io/assets/imgs/download/logo-browser-qq-f3b2955a83.png) no-repeat;
+      background-size: 60px auto;
+      background-position: center;
+    }
+
+    [data-tab="360浏览器"]:before {
+      display: block;
+      height: 60px;
+      content: '';
+      background: url(https://assets.yiban.io/assets/imgs/download/logo-browser-360-54a6d8e78b.png) no-repeat;
+      background-size: 60px auto;
+      background-position: center;
+    }
+    [data-tab="chrome浏览器"]:after, [data-tab="edge浏览器"]:after, [data-tab="qq浏览器"]:after, [data-tab="360浏览器"]:after {
+      content: '推荐';
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-height: 1em;
+      min-width: 1em;
+      padding: 0.325em 0.5em 0.3em 0.5em;
+      border-radius: 3px;
+      background: red;
+      color: #fff;
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 11px;
+      line-height: 1;
+      transform: translate(0%, -45%);
+    }
+  </style>
 </head>
 
 <body>
@@ -33,6 +90,13 @@
         noData: 'No Results!',          // 找不到结果文字提示，支持本地化，例子在下面
         depth: 6,                     // 搜索标题的最大程级, 1 - 6
       },
+      tabs: {
+        persist: true,      // default
+        sync: false,      // default
+        theme: 'classic ', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      },
       auto2top: true
     }
   </script>
@@ -42,6 +106,8 @@
   <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-scroll-to-top/dist/docsify-scroll-to-top.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- docsify-tabs (latest v1.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 </body>
 
 </html>
