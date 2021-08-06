@@ -7,6 +7,10 @@
   - [util](Javascript/util.md)
   - [H5 调用摄像头](Javascript/H5调用摄像头.md)
 
+- TypeScript
+
+  - [Typescript](Typescript/index.md)
+
 - ES6
 
   - [ES6](ES6/index.md)
