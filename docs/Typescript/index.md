@@ -40,6 +40,9 @@ myNum = "seven";
 
 > error TS2322: Type '"seven"' is not assignable to type 'number'.
 
+## unknown vs any
+> 相同的是 unknown 和 any 都可接收任意值，不同的是 unknown 的值必须 type check 或 type assertion 后才可使用，否则报错。 推荐用 any 的地方优先用 unknown，因为 unknown 至少类型安全。  
+> https://dmitripavlutin.com/typescript-unknown-vs-any/
 ## 接口
 
 > 对类的形状（属性）和 行动（方法）进行描述
