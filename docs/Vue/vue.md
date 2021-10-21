@@ -382,7 +382,7 @@ export default {
 
 - 自定义`.sync`需要属性+事件（`update:属性名`）
 
-  ```vue
+  ```js
   <template>
     <div>
       <MyMask :visible.sync="visible"></MyMask>
