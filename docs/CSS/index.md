@@ -2,7 +2,7 @@
 
 - [You-need-to-know-css](https://lhammer.cn/You-need-to-know-css/#/zh-cn/)
 - [灵活运用 CSS 开发技巧](https://juejin.cn/post/6844903926110617613)
-- [语雀timeline布局](https://www.yuque.com/e/conference)
+- [语雀 timeline 布局](https://www.yuque.com/e/conference)
 
 # 技巧
 
@@ -25,5 +25,9 @@ li {
 ```
 
 ## 设置图片如何适应容器宽高
+
 [obj-fit](https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit)
 
+## 设置表单的选择框控件（checkbox 或 radio）选中时的颜色
+
+[accent-color](https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color)
