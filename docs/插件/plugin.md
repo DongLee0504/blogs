@@ -7,8 +7,10 @@
 ### [pinyin-engine](https://github.com/aui/pinyin-engine)
 
 - 这是一款简单高效的拼音匹配引擎，它能使用拼音够快速的检索列表中的数据。![](https://img.shields.io/github/stars/aui/pinyin-engine?style=social)
-  
+
 ### [数字反转](https://github.com/HubSpot/odometer)![](https://img.shields.io/github/stars/HubSpot/odometer?style=social)
+
+### [创建粒子轻量级库](https://github.com/VincentGarreau/particles.js/) ![](https://img.shields.io/github/stars/VincentGarreau/particles.js?style=social)
 
 ## vue
 
@@ -17,7 +19,9 @@
 - 强大的 vue swiper 轮播 ![](https://img.shields.io/github/stars/surmon-china/vue-awesome-swiper?style=social)
 
 ### [vxe-table](https://github.com/x-extends/vxe-table)
+
 - vue table 解决方案（数据量大滚动克顿，虚拟滚动等）![](https://img.shields.io/github/stars/x-extends/vxe-table?style=social)
 
 ## Node
+
 ### [egg](https://eggjs.org/zh-cn/) 为企业级框架和应用而生
