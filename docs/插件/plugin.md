@@ -22,6 +22,10 @@
 
 - vue table 解决方案（数据量大滚动克顿，虚拟滚动等）![](https://img.shields.io/github/stars/x-extends/vxe-table?style=social)
 
+### [vue-uploader](https://github.com/simple-uploader/vue-uploader)
+
+- vue 上传组件，支持断点续传，多文件 ![](https://img.shields.io/github/stars/simple-uploader/vue-uploader?style=social)
+
 ## Node
 
 ### [egg](https://eggjs.org/zh-cn/) 为企业级框架和应用而生
