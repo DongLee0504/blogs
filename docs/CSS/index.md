@@ -3,6 +3,7 @@
 - [You-need-to-know-css](https://lhammer.cn/You-need-to-know-css/#/zh-cn/)
 - [灵活运用 CSS 开发技巧](https://juejin.cn/post/6844903926110617613)
 - [语雀 timeline 布局](https://www.yuque.com/e/conference)
+- [优雅的使用 icon](https://juejin.cn/post/6844903517564436493)
 
 # 技巧
 
