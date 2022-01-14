@@ -12,6 +12,10 @@
 
 ### [创建粒子轻量级库](https://github.com/VincentGarreau/particles.js/) ![](https://img.shields.io/github/stars/VincentGarreau/particles.js?style=social)
 
+### [scrollreveal](https://github.com/jlmakes/scrollreveal) ![](https://img.shields.io/github/stars/jlmakes/scrollreveal?style=social)
+
+- ScrollReveal 是一个 JavaScript 库，用于在元素进入/离开视口时轻松设置动画。它的设计既坚固又灵活，但希望您在下面会惊讶于它是多么容易上手
+
 ## vue
 
 ### [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
