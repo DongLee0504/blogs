@@ -16,6 +16,10 @@
 
 - ScrollReveal 是一个 JavaScript 库，用于在元素进入/离开视口时轻松设置动画。它的设计既坚固又灵活，但希望您在下面会惊讶于它是多么容易上手
 
+### [wow.js](https://github.com/matthieua/WOW)
+
+- 向下滚动页面时显示 CSS 动画
+
 ## vue
 
 ### [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
