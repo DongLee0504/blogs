@@ -4,6 +4,8 @@
 - [灵活运用 CSS 开发技巧](https://juejin.cn/post/6844903926110617613)
 - [语雀 timeline 布局](https://www.yuque.com/e/conference)
 - [优雅的使用 icon](https://juejin.cn/post/6844903517564436493)
+- [CSS技巧](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-CN)
+- [icss](https://github.com/chokcoco/iCSS)
 
 # 技巧
 

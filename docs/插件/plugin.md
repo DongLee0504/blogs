@@ -34,6 +34,18 @@
 
 - vue 上传组件，支持断点续传，多文件 ![](https://img.shields.io/github/stars/simple-uploader/vue-uploader?style=social)
 
+### [DataV](https://github.com/DataV-Team/DataV)
+
+- Vue 数据可视化组件库(大屏展示) ![](https://img.shields.io/github/stars/DataV-Team/DataV?style=social)
+### [vue-manage-system](https://github.com/lin-xin/vue-manage-system)
+- 基于Vue3 + Element Plus 的后台管理系统解决方案 ![](https://img.shields.io/github/stars/lin-xin/vue-manage-system?style=social)
+## CSS
+### [hint.css](https://github.com/chinchang/hint.css)
+- A CSS only tooltip library for your lovely websites ![](https://img.shields.io/github/stars/chinchang/hint.css?style=social)
+
 ## Node
 
 ### [egg](https://eggjs.org/zh-cn/) 为企业级框架和应用而生
+
+## 参考资料
+- [GitHub Top 60 + 优质开源项目合集(2021版)](https://zhuanlan.zhihu.com/p/419823562)
