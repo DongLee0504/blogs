@@ -1,0 +1,40 @@
+# setup
+
+- setup 是组合式 API 的入口
+- setup 需要 return 一个 obj `<script setup>` 除外
+- 选项式 API 可以通过 this 访问 setup 暴露的值，反之不可以（vue2 写法为选项式 API
+
+## ref
+
+- ref 返回一个引用对象 （RefImpl ），基础数据类型（number，string，boolean， undefined，null） 可以通过 value 取到值
+- obj，arr 数据类型 value 值为 [proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 对象
+- 在模板上使用 setup 返回的 RefImpl ，会自动浅层解包，通过 this 访问亦然。
+
+![carbon.png](https://cdn.nlark.com/yuque/0/2022/png/1590823/1650786366966-4d160b89-c3b4-4238-8ea7-3e6cbb48f372.png#clientId=u458ba1f5-7f4a-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=ub69ca50a&margin=%5Bobject%20Object%5D&name=carbon.png&originHeight=1274&originWidth=1262&originalType=binary&ratio=1&rotation=0&showTitle=false&size=192573&status=done&style=none&taskId=uee4aced7-45e8-4fcb-9f5b-b42cf8856c6&title=)
+
+- 为了提升开发体验，ref 前面加上 $，就可以不用.value
+
+```js
+<script setup>
+import { ref } from 'vue'
+
+const count = $ref(0)
+const object = { foo: ref(1) }
+const { foo } = object
+function increment() {
+  count++
+}
+</script>
+
+<template>
+  <button @click="increment">{{ count }}</button>
+</template>
+```
+
+## reactive
+
+## ref reactive 区别
+
+- ref 接受的参数可以是基础数据类型，也可以是对象类型，<mark>但是参数为对象类型时为浅层响应</mark>
+- ref 在`template`中访问，不需加`value`，js 中需要加 `value`
+- reactive 接受的参数为对象类型，深层响应
