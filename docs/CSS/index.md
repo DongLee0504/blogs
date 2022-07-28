@@ -6,6 +6,7 @@
 - [优雅的使用 icon](https://juejin.cn/post/6844903517564436493)
 - [CSS技巧](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-CN)
 - [icss](https://github.com/chokcoco/iCSS)
+- [纯css打造个性化loading](https://juejin.cn/post/7037036742985121800)
 
 # 技巧
 
